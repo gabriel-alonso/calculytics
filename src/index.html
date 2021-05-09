@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculytics - Calculadora em TypeScript</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles.scss">
+</head>
+
+<body>
+  <section id="calculytics">
+    <p id="display" class="display onDisplay">0</p>
+    <div class="buttons">
+      <div class="numbers">
+        <button class="calcButton calcButton15 operator" data-value="clear"
+          data-type="operator" style="background-color: #dce1e7;"><span>C</span></button>
+        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
+          data-type="operator" style="background-color: #dce1e7;"><span>-/+</span></button>
+        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
+          data-type="operator" style="background-color: #dce1e7;"><span>%</span></button>
+        <button class="calcButton calcButton7 number" data-value="7"
+          data-type="number" style="background-color: #e8ecf7;"><span>7</span></button>
+        <button class="calcButton calcButton8 number" data-value="8"
+          data-type="number" style="background-color: #e8ecf7;"><span>8</span></button>
+        <button class="calcButton calcButton9 number" data-value="9"
+          data-type="number" style="background-color: #e8ecf7;"><span>9</span></button>
+        <button class="calcButton calcButton4 number" data-value="4"
+          data-type="number" style="background-color: #e8ecf7;"><span>4</span></button>
+        <button class="calcButton calcButton5 number" data-value="5"
+          data-type="number" style="background-color: #e8ecf7;"><span>5</span></button>
+        <button class="calcButton calcButton6 number" data-value="6"
+          data-type="number" style="background-color: #e8ecf7;"><span>6</span></button>
+        <button class="calcButton calcButton1 number" data-value="1"
+          data-type="number" style="background-color: #e8ecf7;"><span>1</span></button>
+        <button class="calcButton calcButton2 number" data-value="2"
+          data-type="number" style="background-color: #e8ecf7;"><span>2</span></button>
+        <button class="calcButton calcButton3 number" data-value="3"
+          data-type="number" style="background-color: #e8ecf7;"><span>3</span></button>
+        <button class="calcButton calcButton0 number" data-value="0"
+          data-type="number" style="background-color: #e8ecf7;"><span>0</span></button>
+        <button class="calcButton calcButton10 operator" data-value="."
+          data-type="operator" style="background-color: #e8ecf7;"><span>.</span></button>
+        <button class="calcButton calcButton16 operator" data-value="evaluate"
+          data-type="operator" style="background-color: #ff6f00;"><span>=</span></button>
+      </div>
+      <div class="operators">
+        <button class="calcButton calcButton14 operator" data-value="/"
+          data-type="operator" style="background-color: #dce1e7;"><span>&divide;</span></button>
+        <button class="calcButton calcButton13 operator" data-value="*"
+          data-type="operator" style="background-color: #dce1e7;"><span>&times;</span></button>
+        <button class="calcButton calcButton12 operator" data-value="-"
+          data-type="operator" style="background-color: #dce1e7;"><span>&minus;</span></button>
+        <button class="calcButton calcButton11 operator" data-value="+"
+          data-type="operator" style="background-color: #dce1e7;"><span>&plus;</span></button>
+      </div>
+    </div>
+  </section>
+  <script src="./index.ts"></script>
+</body>
+
+</html>
