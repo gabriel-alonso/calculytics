@@ -38,6 +38,15 @@ body {
   .calcButton {
     height: $tileWidth;
   }
+  .bg-gray-dark {
+    background-color: #dce1e7 !important;
+  }
+  .bg-gray-light {
+    background-color: #e8ecf7 !important;
+  }
+  .bg-orange {
+    background-color: #ff6f00 !important;
+  }
 }
 
 #calculytics {

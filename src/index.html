@@ -1,88 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Calculytics - Calculadora em TypeScript</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles.scss" />
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Calculytics - Calculadora em TypeScript</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./styles.scss">
-</head>
-
-<body>
-  <section id="calculytics">
-    <p id="display" class="display onDisplay">0</p>
-    <div class="buttons">
-      <div class="numbersOperators">
-        <button class="calcButton calcButton15 operator" data-value="clear"
-          data-type="operator" style="background-color: #dce1e7;"><span>C</span></button>
-        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
-          data-type="operator" style="background-color: #dce1e7;">
-          <span>
-            <svg version="1.1"
-              id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-              viewBox="0 0 490.587 490.587"
-              style="enable-background:new 0 0 490.587 490.587;width: 19px;"
-              xml:space="preserve">
-              <path d="M479.92,79.907H163.653c-2.88,0-5.547,1.173-7.573,3.2L3.12,237.773c-4.16,4.16-4.16,10.88,0,15.04L156.187,407.48
-                  c2.027,2.027,4.693,3.2,7.573,3.2h316.16c5.867,0,10.667-4.8,10.667-10.667V90.573C490.587,84.707,485.787,79.907,479.92,79.907z
-                   M469.253,389.24H168.027l-142.4-144l142.507-144h301.12V389.24z" />
-              <path
-                d="M248.453,183.373l61.76,61.76l-61.76,61.76c-4.16,4.267-4.053,10.987-0.107,15.147c4.16,4.16,10.88,4.16,15.04,0
-                  l61.76-61.76l61.76,61.76c4.267,4.053,10.987,3.947,15.04-0.213c3.947-4.16,3.947-10.667,0-14.827l-61.653-61.76l61.76-61.76
-                  c4.053-4.267,3.947-10.987-0.213-15.04c-4.16-3.947-10.667-3.947-14.827,0l-61.76,61.653l-61.76-61.76
-                  c-4.053-4.267-10.88-4.373-15.04-0.213s-4.373,10.88-0.213,15.04C248.347,183.267,248.453,183.373,248.453,183.373z" />
-            </svg>
-          </span>
-        </button>
-        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
-          data-type="operator" style="background-color: #dce1e7;"><span>%</span></button>
-        <button class="calcButton calcButton7 number" data-value="7"
-          data-type="number" style="background-color: #e8ecf7;"><span>7</span></button>
-        <button class="calcButton calcButton8 number" data-value="8"
-          data-type="number" style="background-color: #e8ecf7;"><span>8</span></button>
-        <button class="calcButton calcButton9 number" data-value="9"
-          data-type="number" style="background-color: #e8ecf7;"><span>9</span></button>
-        <button class="calcButton calcButton4 number" data-value="4"
-          data-type="number" style="background-color: #e8ecf7;"><span>4</span></button>
-        <button class="calcButton calcButton5 number" data-value="5"
-          data-type="number" style="background-color: #e8ecf7;"><span>5</span></button>
-        <button class="calcButton calcButton6 number" data-value="6"
-          data-type="number" style="background-color: #e8ecf7;"><span>6</span></button>
-        <button class="calcButton calcButton1 number" data-value="1"
-          data-type="number" style="background-color: #e8ecf7;"><span>1</span></button>
-        <button class="calcButton calcButton2 number" data-value="2"
-          data-type="number" style="background-color: #e8ecf7;"><span>2</span></button>
-        <button class="calcButton calcButton3 number" data-value="3"
-          data-type="number" style="background-color: #e8ecf7;"><span>3</span></button>
-        <button class="calcButton calcButton0 number" data-value="0"
-          data-type="number" style="background-color: #e8ecf7;"><span>0</span></button>
-        <button class="calcButton calcButton10 operator" data-value="."
-          data-type="operator" style="background-color: #e8ecf7;"><span>.</span></button>
-        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
-          data-type="operator" style="background-color: #e8ecf7;"><span>-/+</span></button>
-      </div>
-      <div class="operators">
-        <button class="calcButton calcButton14 operator" data-value="/"
-          data-type="operator" style="background-color: #dce1e7;"><span>&divide;</span></button>
-        <button class="calcButton calcButton13 operator" data-value="*"
-          data-type="operator" style="background-color: #dce1e7;"><span>&times;</span></button>
-        <button class="calcButton calcButton12 operator" data-value="-"
-          data-type="operator" style="background-color: #dce1e7;"><span>&minus;</span></button>
-        <button class="calcButton calcButton11 operator" data-value="+"
-          data-type="operator" style="background-color: #dce1e7;"><span>&plus;</span></button>
-        <button class="calcButton calcButton16 operator" data-value="evaluate"
-          data-type="operator" style="background-color: #ff6f00;"><span>=</span></button>
-      </div>
-    </div>
-  </section>
-  <script src="./index.ts"></script>
-</body>
-
+    <body>
+        <section id="calculytics">
+            <p id="valueOnScreen" class="display onDisplay">0</p>
+            <div class="buttons">
+                <div class="numbersOperators">
+                    <button class="calcButton operator bg-gray-dark" data-value="clear" data-type="operator"><span>C</span></button>
+                    <button class="calcButton operator bg-gray-dark" data-value="clear" data-type="operator">
+                        <span>
+                            <svg id="clear" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 490.587 490.587" style="enable-background: new 0 0 490.587 490.587; width: 19px;" xml:space="preserve">
+                                <path
+                                    d="M479.92,79.907H163.653c-2.88,0-5.547,1.173-7.573,3.2L3.12,237.773c-4.16,4.16-4.16,10.88,0,15.04L156.187,407.48 c2.027,2.027,4.693,3.2,7.573,3.2h316.16c5.867,0,10.667-4.8,10.667-10.667V90.573C490.587,84.707,485.787,79.907,479.92,79.907z M469.253,389.24H168.027l-142.4-144l142.507-144h301.12V389.24z"/>
+                                <path
+                                    d="M248.453,183.373l61.76,61.76l-61.76,61.76c-4.16,4.267-4.053,10.987-0.107,15.147c4.16,4.16,10.88,4.16,15.04,0 l61.76-61.76l61.76,61.76c4.267,4.053,10.987,3.947,15.04-0.213c3.947-4.16,3.947-10.667,0-14.827l-61.653-61.76l61.76-61.76 c4.053-4.267,3.947-10.987-0.213-15.04c-4.16-3.947-10.667-3.947-14.827,0l-61.76,61.653l-61.76-61.76 c-4.053-4.267-10.88-4.373-15.04-0.213s-4.373,10.88-0.213,15.04C248.347,183.267,248.453,183.373,248.453,183.373z"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="calcButton operator bg-gray-dark" data-value="switchPolarity" data-type="operator"><span>%</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="7" data-type="number"><span>7</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="8" data-type="number"><span>8</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="9" data-type="number"><span>9</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="4" data-type="number"><span>4</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="5" data-type="number"><span>5</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="6" data-type="number"><span>6</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="1" data-type="number"><span>1</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="2" data-type="number"><span>2</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="3" data-type="number"><span>3</span></button>
+                    <button class="calcButton number bg-gray-light" data-value="0" data-type="number"><span>0</span></button>
+                    <button class="calcButton operator bg-gray-light" data-value="." data-type="operator"><span>.</span></button>
+                    <button class="calcButton operator bg-gray-light" data-value="switchPolarity" data-type="operator"><span>-/+</span></button>
+                </div>
+                <div class="operators">
+                    <button class="calcButton operator bg-gray-dark" data-value="/" data-type="operator"><span>&divide;</span></button>
+                    <button class="calcButton operator bg-gray-dark" data-value="*" data-type="operator"><span>&times;</span></button>
+                    <button class="calcButton operator bg-gray-dark" data-value="-" data-type="operator"><span>&minus;</span></button>
+                    <button class="calcButton operator bg-gray-dark" data-value="+" data-type="operator"><span>&plus;</span></button>
+                    <button class="calcButton operator bg-orange" data-value="evaluate" data-type="operator"><span>=</span></button>
+                </div>
+            </div>
+        </section>
+        <script src="./index.ts"></script>
+    </body>
 </html>

@@ -6,7 +6,7 @@ declare interface ElementEvent extends Event {
 }
 
 function main() {
-  const display: HTMLParagraphElement = document.querySelector('p#display');
+  const display: HTMLParagraphElement = document.querySelector('p#valueOnScreen');
   const calc = new Calculator();
   const calcBtns = document.querySelectorAll('.calcButton');
 
