@@ -18,11 +18,29 @@
   <section id="calculytics">
     <p id="display" class="display onDisplay">0</p>
     <div class="buttons">
-      <div class="numbers">
+      <div class="numbersOperators">
         <button class="calcButton calcButton15 operator" data-value="clear"
           data-type="operator" style="background-color: #dce1e7;"><span>C</span></button>
         <button class="calcButton calcButton17 operator" data-value="switchPolarity"
-          data-type="operator" style="background-color: #dce1e7;"><span>-/+</span></button>
+          data-type="operator" style="background-color: #dce1e7;">
+          <span>
+            <svg version="1.1"
+              id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 490.587 490.587"
+              style="enable-background:new 0 0 490.587 490.587;width: 19px;"
+              xml:space="preserve">
+              <path d="M479.92,79.907H163.653c-2.88,0-5.547,1.173-7.573,3.2L3.12,237.773c-4.16,4.16-4.16,10.88,0,15.04L156.187,407.48
+                  c2.027,2.027,4.693,3.2,7.573,3.2h316.16c5.867,0,10.667-4.8,10.667-10.667V90.573C490.587,84.707,485.787,79.907,479.92,79.907z
+                   M469.253,389.24H168.027l-142.4-144l142.507-144h301.12V389.24z" />
+              <path
+                d="M248.453,183.373l61.76,61.76l-61.76,61.76c-4.16,4.267-4.053,10.987-0.107,15.147c4.16,4.16,10.88,4.16,15.04,0
+                  l61.76-61.76l61.76,61.76c4.267,4.053,10.987,3.947,15.04-0.213c3.947-4.16,3.947-10.667,0-14.827l-61.653-61.76l61.76-61.76
+                  c4.053-4.267,3.947-10.987-0.213-15.04c-4.16-3.947-10.667-3.947-14.827,0l-61.76,61.653l-61.76-61.76
+                  c-4.053-4.267-10.88-4.373-15.04-0.213s-4.373,10.88-0.213,15.04C248.347,183.267,248.453,183.373,248.453,183.373z" />
+            </svg>
+          </span>
+        </button>
         <button class="calcButton calcButton17 operator" data-value="switchPolarity"
           data-type="operator" style="background-color: #dce1e7;"><span>%</span></button>
         <button class="calcButton calcButton7 number" data-value="7"
@@ -47,8 +65,8 @@
           data-type="number" style="background-color: #e8ecf7;"><span>0</span></button>
         <button class="calcButton calcButton10 operator" data-value="."
           data-type="operator" style="background-color: #e8ecf7;"><span>.</span></button>
-        <button class="calcButton calcButton16 operator" data-value="evaluate"
-          data-type="operator" style="background-color: #ff6f00;"><span>=</span></button>
+        <button class="calcButton calcButton17 operator" data-value="switchPolarity"
+          data-type="operator" style="background-color: #e8ecf7;"><span>-/+</span></button>
       </div>
       <div class="operators">
         <button class="calcButton calcButton14 operator" data-value="/"
@@ -59,6 +77,8 @@
           data-type="operator" style="background-color: #dce1e7;"><span>&minus;</span></button>
         <button class="calcButton calcButton11 operator" data-value="+"
           data-type="operator" style="background-color: #dce1e7;"><span>&plus;</span></button>
+        <button class="calcButton calcButton16 operator" data-value="evaluate"
+          data-type="operator" style="background-color: #ff6f00;"><span>=</span></button>
       </div>
     </div>
   </section>
