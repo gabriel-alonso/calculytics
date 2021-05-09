@@ -1,23 +1,14 @@
 import Calculator from './modules/Calculator';
 
-/**
- * Declare interface ElementEvent.
- * @author Gabriel Alonso
- */
 declare interface ElementEvent extends Event {
-  currentTarget: HTMLElement; //alvo atual
-  target: HTMLElement; //alvo posterior
+  currentTarget: HTMLElement;
+  target: HTMLElement;
 }
 
-/**
- * Main Function of the calculator.
- * @return void
- * @author Gabriel Alonso
- */
 function main() {
-  const display: HTMLParagraphElement = document.querySelector('p#display'); //é um interface que fornece propriedades especiais de um <p> elemento.
-  const calc = new Calculator(); //cria um objeto da classe calculadora.
-  const calcBtns = document.querySelectorAll('.calcButton'); //vai retornar as informações desse selector, então nesse caso vai informações sobre o botão.
+  const display: HTMLParagraphElement = document.querySelector('p#display');
+  const calc = new Calculator();
+  const calcBtns = document.querySelectorAll('.calcButton');
 
   const handleDisplayUpdate = (val: string) => {
     display.innerText = val ? val : '0';
