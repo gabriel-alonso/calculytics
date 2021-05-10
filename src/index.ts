@@ -5,32 +5,27 @@ declare interface ElementEvent extends Event {
   target: HTMLElement;
 }
 
-function init() {
-
-  const display: HTMLParagraphElement = document.querySelector('p#display');
+function main() {
+  const display: HTMLParagraphElement = document.querySelector('p#valueOnScreen');
   const calc = new Calculator();
   const calcBtns = document.querySelectorAll('.calcButton');
 
   const handleDisplayUpdate = (val: string) => {
-    display.innerText = val ? val : '0'
+    display.innerText = val ? val : '0';
   };
 
   calc.onDisplayUpdate(handleDisplayUpdate);
 
   const handleBtnClick = (e: ElementEvent) => {
     const el = e.currentTarget;
-    const {
-      value,
-      type
-    } = el.dataset;
+    const {value, type} = el.dataset;
     calc.buttonPressed({
       type,
-      value
-    })
-  }
+      value,
+    });
+  };
 
-  calcBtns.forEach(btn => btn.addEventListener('click', handleBtnClick));
-
+  calcBtns.forEach((btn) => btn.addEventListener('click', handleBtnClick));
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', main);

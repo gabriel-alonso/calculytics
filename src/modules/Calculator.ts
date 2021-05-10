@@ -1,22 +1,19 @@
-// UI buttons for calculator
-interface button {
-  type: string; // 'number' | 'operator' | 'action'
+interface Button {
+  type: string;
   value: string;
 }
 
-interface history {
+interface History {
   operation: Function;
-  leftNum: number;
-  rightNum: number;
+  leftNumber: number;
+  rightNumber: number;
 }
 
-// Math operations
-const add: Function = (a: number, b: number): number => a + b;
-const subtract: Function = (a: number, b: number): number => a - b;
-const divide: Function = (a: number, b: number): number => a / b;
-const multiply: Function = (a: number, b: number): number => a * b;
+const add: Function = (number1: number, number2: number): number => number1 + number2;
+const subtract: Function = (number1: number, number2: number): number => number1 - number2;
+const divide: Function = (number1: number, number2: number): number => number1 / number2;
+const multiply: Function = (number1: number, number2: number): number => number1 * number2;
 
-// map symbols to math operations
 const operations: {[index: string]: Function} = {
   '+': add,
   '-': subtract,
@@ -25,13 +22,13 @@ const operations: {[index: string]: Function} = {
 };
 
 class Calculator {
-  currentTotal: number; // What the current running total is
-  currentOperator: string; // What the active operator is
-  lastOperator: string; // The last operator that was pressed
+  currentTotal: number;
+  currentOperatorActive: string;
+  lastOperatorPressed: string;
   displayShouldClear: boolean;
   onDisplayUpdateHandlers: Array<Function>;
   onDisplay: string;
-  history: history[];
+  history: History[];
 
   constructor() {
     this.history = [];
@@ -56,18 +53,18 @@ class Calculator {
     return false;
   };
 
-  numberPressed = (btn: button) => {
+  numberPressed = (btn: Button) => {
     const isNegativeZero = this.onDisplay === '-0';
     if (this.displayShouldClear) {
       this.clear();
       this.displayShouldClear = false;
     }
 
-    if (this.currentOperator && this.onDisplay && !isNegativeZero) {
+    if (this.currentOperatorActive && this.onDisplay && !isNegativeZero) {
       this.removeHangingDecimal();
 
       if (this.currentTotal) {
-        const operation = operations[this.lastOperator];
+        const operation = operations[this.lastOperatorPressed];
         const result = operation(this.currentTotal, parseFloat(this.onDisplay));
         this.currentTotal = result;
       } else {
@@ -76,18 +73,16 @@ class Calculator {
 
       this.onDisplay = null;
 
-      this.lastOperator = this.currentOperator;
-      this.currentOperator = null;
+      this.lastOperatorPressed = this.currentOperatorActive;
+      this.currentOperatorActive = null;
     }
 
-    // We handle null/-0 the same, replace them with the number pressed
     if (this.onDisplay === null || isNegativeZero) {
       this.onDisplay = isNegativeZero ? '-' + btn.value : btn.value;
       this.fireDisplayUpdateHandlers();
       return;
     }
 
-    // Don't let more than one 0 be displayed
     if (this.onDisplay === '0' && btn.value === '0') {
       return;
     }
@@ -104,35 +99,33 @@ class Calculator {
   };
 
   evaluate = () => {
-    // No operator? Can't evaluate
-    if (!this.currentOperator && !this.lastOperator) return;
+    if (!this.currentOperatorActive && !this.lastOperatorPressed) return;
 
     this.removeHangingDecimal();
 
-    let leftNum;
-    let rightNum;
+    let leftNumber;
+    let rightNumber;
     let operation;
     if (this.displayShouldClear) {
-      // Hitting evaluate again just after an evaluation, repeat op
       const latestOperation = this.history[this.history.length - 1];
-      leftNum = parseFloat(this.onDisplay);
-      rightNum = latestOperation.rightNum;
+      leftNumber = parseFloat(this.onDisplay);
+      rightNumber = latestOperation.rightNumber;
       operation = latestOperation.operation;
     } else {
-      leftNum = this.currentTotal;
-      rightNum = parseFloat(this.onDisplay);
-      operation = operations[this.currentOperator || this.lastOperator];
+      leftNumber = this.currentTotal;
+      rightNumber = parseFloat(this.onDisplay);
+      operation = operations[this.currentOperatorActive || this.lastOperatorPressed];
     }
 
-    const result = operation(leftNum, rightNum);
+    const result = operation(leftNumber, rightNumber);
     this.currentTotal = null;
     this.onDisplay = result.toString();
     this.fireDisplayUpdateHandlers();
     this.displayShouldClear = true;
     this.history.push({
       operation: operation,
-      leftNum,
-      rightNum,
+      leftNumber,
+      rightNumber,
     });
     return result;
   };
@@ -141,12 +134,12 @@ class Calculator {
     this.onDisplay = null;
     this.fireDisplayUpdateHandlers();
     this.currentTotal = null;
-    this.currentOperator = null;
-    this.lastOperator = null;
+    this.currentOperatorActive = null;
+    this.lastOperatorPressed = null;
     this.displayShouldClear = true;
   };
 
-  actionPressed = (btn: button) => {
+  actionPressed = (btn: Button) => {
     switch (btn.value) {
       case 'evaluate':
         this.evaluate();
@@ -155,7 +148,7 @@ class Calculator {
       case '-':
       case '*':
       case '/':
-        this.currentOperator = btn.value;
+        this.currentOperatorActive = btn.value;
         this.displayShouldClear = false;
         break;
       case 'clear':
@@ -174,10 +167,10 @@ class Calculator {
         }
         break;
       case 'switchPolarity':
-        if (this.currentOperator && this.onDisplay) {
+        if (this.currentOperatorActive && this.onDisplay) {
           this.currentTotal = parseFloat(this.onDisplay);
         }
-        if (!this.onDisplay || (this.onDisplay && this.currentOperator)) {
+        if (!this.onDisplay || (this.onDisplay && this.currentOperatorActive)) {
           this.onDisplay = '0';
         }
         if (this.onDisplay.substr(0, 1) === '-') {
@@ -193,7 +186,7 @@ class Calculator {
     }
   };
 
-  buttonPressed = (btn: button) => {
+  buttonPressed = (btn: Button) => {
     switch (btn.type) {
       case 'number':
         this.numberPressed(btn);
@@ -202,12 +195,12 @@ class Calculator {
         this.actionPressed(btn);
         break;
       default:
-        throw new Error('Button type not recognized!');
+        throw new Error('Esse tipo de botão é inválido.');
     }
     return;
   };
 
-  pressButtons = (arr: Array<button>) => {
+  pressButtons = (arr: Array<Button>) => {
     arr.forEach(this.buttonPressed);
   };
 }
