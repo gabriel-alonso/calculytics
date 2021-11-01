@@ -22,7 +22,7 @@
 
 ---
 
-### Imagens do projeto
+### Imagem do projeto
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="NextLevelWeek" title="Imagem - Traffic Light Car" src="https://user-images.githubusercontent.com/25436067/117591158-7de65080-b109-11eb-840b-3cf057811aae.png" width="400px">
